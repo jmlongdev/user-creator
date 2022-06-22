@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import AddUser from "./components/Users/AddUser";
 import UsersList from "./components/Users/UsersList";
 
@@ -14,10 +15,27 @@ function App() {
     });
   };
 
+  const deleteUserHandler = (userId) => {
+    setUsersList((prevUsersList) => {
+      const updatedUsers = prevUsersList.filter((user) => user.id !== userId);
+      return updatedUsers;
+    });
+  };
+
+  let content = (
+    <p style={{ textAlign: "center", color: "white" }}>
+      No Users found. Try Adding one!
+    </p>
+  );
+
+  if (usersList.length > 0) {
+    content = <UsersList users={usersList} onDeleteUser={deleteUserHandler} />;
+  }
+
   return (
     <div>
       <AddUser onAddUser={addUsersHandler} />
-      <UsersList users={usersList} />
+      {content}
     </div>
   );
 }
