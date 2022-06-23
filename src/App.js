@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 
+import Header from "./components/Header/Header";
 import AddUser from "./components/Users/AddUser";
 import UsersList from "./components/Users/UsersList";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [usersList, setUsersList] = useState([]);
 
-  const addUsersHandler = (userName, userAge) => {
+  const addUsersHandler = (userName, userAge, userJob) => {
     setUsersList((prevUsersList) => {
       return [
         ...prevUsersList,
-        { name: userName, age: userAge, id: Math.random().toString() },
+        {
+          name: userName,
+          age: userAge,
+          job: userJob,
+          id: Math.random().toString(),
+        },
       ];
     });
   };
@@ -34,8 +41,10 @@ function App() {
 
   return (
     <div>
+      <Header />
       <AddUser onAddUser={addUsersHandler} />
       {content}
+      <Footer />
     </div>
   );
 }

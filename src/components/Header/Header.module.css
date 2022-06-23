@@ -1,0 +1,20 @@
+.header {
+  padding: 25px 0px;
+  text-align: center;
+  background: rgb(48, 48, 48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: larger;
+}
+
+.header h1 {
+  padding-right: 15px;
+}
+
+.header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
